@@ -1,0 +1,50 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Example jQuery Reference -->
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!-- Example jQuery Script to handle your event -->
+    <script type='text/javascript'>
+  $(function(){
+       // When a color is chosen, set it as the background for this page
+       $("#color").change(function(){
+          // Set the background to that color
+          $("body").css('background', $(this).val());
+       });
+  });
+    </script>
+</head>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2>Index</h2>
+
+    Start: @Html.Raw(ViewBag.SessionStart)
+    <br />
+    End: @Html.Raw(ViewBag.SessionEnd)
+    <br />
+    SessionID: @Html.Raw(ViewBag.SessionID)
+    <br />
+
+    @using (Html.BeginForm("ClearSession", "Home", FormMethod.Post))
+    {
+        <input type="submit" value="Clear Session" />
+    }
+
+
+    <body>
+        <!-- A Drop down list with a collection of colors -->
+        <select id='color'>
+            <!-- Notice the value properties will be the actual background values to use (e.g colors or URL values) -->
+            <option value='initial'>Normal</option>
+            <option value='red'>Red</option>
+            <option value='yellow'>Yellow</option>
+            <option value='blue'>Blue</option>
+        </select>
+    </body>
+</html>
+
